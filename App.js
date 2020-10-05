@@ -1,5 +1,6 @@
-import { StatusBar } from 'expo-status-bar';
+// import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+import { StyleSheet } from 'react-native';
 import Search from './Components/Search';
 
 export default class App extends React.Component {
