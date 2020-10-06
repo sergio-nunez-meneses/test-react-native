@@ -9,19 +9,19 @@ class Search extends React.Component {
     super (props)
     this.searchedText = ''
     this.state = {
-      films: [],
+      films: []
     }
   }
 
   _searchTextInputChanged(text) {
-    this.setState({ searchedText: text })
+    this.searchedText = text
   }
 
   // JS syntax to indicate that this is a private method
   _loadFilms() {
-    console.log(this.state.searchedText);
-    if (this.state.searchedText.length > 0) {
-      getFilmsFromApiWithSearchedText(this.state.searchedText)
+    console.log(this.searchedText);
+    if (this.searchedText.length > 0) {
+      getFilmsFromApiWithSearchedText(this.searchedText)
         .then(data => {
           this.setState({ films: data.results })
         })
