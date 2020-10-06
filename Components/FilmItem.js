@@ -6,14 +6,15 @@ class FilmItem extends React.Component {
     const film = this.props.film;
     return (
       <View style={styles.container}>
-        <Image
-          style={styles.image}
-          source={{uri: 'https://www.themoviedb.org/movie' + film.poster_path}}
-        />
+        <View style={styles.image_container}>
+          <Image
+            style={styles.image}
+            source={{uri: 'https://www.themoviedb.org/movie' + film.poster_path}}
+          />
+        </View>
         <View style={styles.content}>
           <View style={styles.header}>
             <Text style={styles.title}>{film.original_title}</Text>
-            <Text style={styles.vote}>{film.id}</Text>
             <Text style={styles.vote}>{film.vote_average}</Text>
           </View>
           <View style={styles.description_container}>
@@ -31,17 +32,25 @@ class FilmItem extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: 190,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    height: 200,
+    marginVertical: 3,
+    borderWidth: 1,
+    borderColor: 'rgba(0, 0, 0, 0.6)'
+  },
+  image_container: {
+    flex: 5,
+    justifyContent: 'center',
+    alignContent: 'center'
   },
   image: {
     width: 120,
     height: 180,
-    margin: 5,
+    margin: 1,
     backgroundColor: 'gray'
   },
   content: {
-    flex: 1,
+    flex: 10,
     margin: 5
   },
   header: {
@@ -49,11 +58,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   title: {
-    fontWeight: 'bold',
-    fontSize: 20,
     flex: 1,
     flexWrap: 'wrap',
-    paddingRight: 5
+    paddingRight: 5,
+    fontWeight: 'bold',
+    fontSize: 20
   },
   vote: {
     fontWeight: 'bold',

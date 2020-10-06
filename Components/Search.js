@@ -7,9 +7,9 @@ import { getFilmsFromApiWithSearchedText } from '../API/TMDBApi' // import { } f
 class Search extends React.Component {
   constructor(props) {
     super (props)
+    this.searchedText = ''
     this.state = {
       films: [],
-      searchedText: ''
     }
   }
 
@@ -34,18 +34,16 @@ class Search extends React.Component {
       <View style={styles.container}>
         <TextInput
           style={styles.textinput}
-          placeholder='Film Title'
+          placeholder='Enter a film title'
           onChangeText={(text) => this._searchTextInputChanged(text)}
         />
         <Button title='Search' onPress={() => this._loadFilms()}/>
         {/* <FilmItem/> is a custom component */}
-        <View style={styles.list_container}>
-          <FlatList
-            data={this.state.films}
-            keyExtractor={(item) => item.id.toString()}
-            renderItem={({item}) => <FilmItem film={item}/>}
-          />
-        </View>
+        <FlatList
+          data={this.state.films}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({item}) => <FilmItem film={item}/>}
+        />
       </View>
     )
   }
@@ -54,22 +52,11 @@ class Search extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 0,
-    alignItems: 'center',
+    margin: 1,
     justifyContent: 'center',
-    backgroundColor: '#ddd',
-  },
-  list_container: {
-    flex: 1,
-    marginTop: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 10,
-    backgroundColor: '#ddd',
   },
   textinput: {
-    width: 300,
-    height: 50,
+    height: 70,
     marginTop: 1,
     marginBottom: 1,
     borderWidth: 1,
