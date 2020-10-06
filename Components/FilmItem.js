@@ -3,24 +3,25 @@ import { StyleSheet, View, Image, Text } from 'react-native'
 
 class FilmItem extends React.Component {
   render() {
-    console.log(this.props);
+    const film = this.props.film;
     return (
       <View style={styles.container}>
         <Image
           style={styles.image}
-          source={{uri: "image"}}
+          source={{uri: 'https://www.themoviedb.org/movie' + film.poster_path}}
         />
         <View style={styles.content}>
           <View style={styles.header}>
-            <Text style={styles.title}>Title</Text>
-            <Text style={styles.vote}>Vote</Text>
+            <Text style={styles.title}>{film.original_title}</Text>
+            <Text style={styles.vote}>{film.id}</Text>
+            <Text style={styles.vote}>{film.vote_average}</Text>
           </View>
           <View style={styles.description_container}>
-          {/* style and numberOfLines are 'props', that means, properties of a component*/}
-            <Text style={styles.description} numberOfLines={6}>Description</Text>
+            {/* style and numberOfLines are 'props', that means, properties of a component*/}
+            <Text style={styles.description} numberOfLines={6}>{film.overview}</Text>
           </View>
           <View style={styles.date_container}>
-            <Text style={styles.date}>Premiered on 00/00/0000</Text>
+            <Text style={styles.date}>{film.release_date}</Text>
           </View>
         </View>
       </View>
@@ -30,8 +31,8 @@ class FilmItem extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    height: 190
+    height: 190,
+    flexDirection: 'row'
   },
   image: {
     width: 120,
@@ -48,11 +49,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   title: {
+    fontWeight: 'bold',
+    fontSize: 20,
     flex: 1,
     flexWrap: 'wrap',
-    paddingRight: 5,
-    fontWeight: 'bold',
-    fontSize: 20
+    paddingRight: 5
   },
   vote: {
     fontWeight: 'bold',
@@ -62,7 +63,7 @@ const styles = StyleSheet.create({
   description_container: {
     flex: 7
   },
-  description_text: {
+  description: {
     fontStyle: 'italic',
     color: '#666666'
   },
@@ -73,6 +74,6 @@ const styles = StyleSheet.create({
     textAlign: 'right',
     fontSize: 14
   }
-});
+})
 
 export default FilmItem
